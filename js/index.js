@@ -26,7 +26,7 @@ function printCards(array,id){
         <article class="card-body">
             <h4>${array[i].name}</h4>
             <p>${array[i].description}</p>
-            <a href="#" class="btn btn-secondary">see more</a>
+            <button class="btn btn-secondary" id="btn-details" ><a href="./details.html" class="nav-link text-white">see more</a></button>
         </article>`
         id?.appendChild(carta)
 }}
@@ -34,5 +34,15 @@ function printCards(array,id){
 printCards(past,cardPast)
 printCards(upcomming,cardUpcomming)
 printCards(home,cardHome)
+
+function printDetails(array){
+
+}
+
+let details = document.getElementById("btn-details")
+
+details.addEventListener=("Onclick", function (event){
+
+})
 
 
