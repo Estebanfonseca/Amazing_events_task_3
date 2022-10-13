@@ -140,7 +140,7 @@ h2 {
     height: 5%;
     display: flex;
     flex-wrap:wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 .btn-secondary {
     background-color: var(--bs-code-color);
@@ -256,9 +256,6 @@ h2 {
 
 
 @media screen and (max-width:1190px){
-    .formAndCheck{
-        flex-direction: column-reverse;
-    }
     .search{
         width:100%;
     }
