@@ -1,38 +1,13 @@
-const cardPast = document.("#sectionPast")
-const cardHome = document.("#section")
-const cardUpcomming = document.('#section1')
-
-let fecha = Date.parse(currentDate)
-console.log(cardPast)
-// console.log(cardHome)
-// console.log(cardUpcomming)
-
-let past = events.filter(function(date){
-    return Date.parse(date.date) < fecha
-}).sort((a,b)=> a.name.localeCompare(b.name))
-
-let upcomming = events.filter(function(date){
-    return Date.parse(date.date) > fecha
-}).sort((a,b)=> a.name.localeCompare(b.name))
-
 let home = events.map(function(event){
     return event
 }).sort((a,b)=> a.name.localeCompare(b.name))
 
-// function printCards(array){
-//     array.forEach(card=>{
-//         let carta = document.createElement('div')
-//         carta.className ='card rounded-4 '
-//         carta.innerHTML+=` <img class="p-3 rounded-5" src="${card.image}" alt="${card.name}" height="250" />
-//         <article class="card-body">
-//             <h4>${card.name}</h4>
-//             <p>${card.description}</p>
-//             <button class="btn btn-secondary" id="btn-details" ><a href="./details.html" class="nav-link text-white">see more</a></button>
-//         </article>`
-//         id?.appendChild(carta)
-// })}
+let card = document.getElementById("section")
 
-function render (data,cont){
+
+
+
+function cards (data){
     data.forEach(item => {
         let carta = document.createElement('div')
         carta.className ='card rounded-4 '
@@ -42,39 +17,16 @@ function render (data,cont){
             <p>${item.description}</p>
             <button class="btn btn-secondary" id="btn-details" ><a href="./details.html" class="nav-link text-white">see more</a></button>
         </article>`
-        cont[0].appendChild(carta)
+        card.appendChild(carta)
     })
 }
-render(home,cardHome)
-render(past,cardPast)
-render(upcomming,cardUpcomming)
 
-// function otra (array,id){
-//     array.forEach(card =>{
-//         id.innerHTML+=` <div class="card rounded-4">
-//         <img class="p-3 rounded-5" src="${card.image}" alt="${card.name}" height="250" />
-//         <article class="card-body">
-//             <h4>${card.name}</h4>
-//             <p>${card.description}</p>
-//             <button class="btn btn-secondary" id="btn-details" ><a href="./details.html" class="nav-link text-white">see more</a></button>
-//         </article>
-//         <div/>`
-//     })
-// }
-// console.log(otra(home,cardHome))
-
-let section = document.querySelectorAll("section")
-
-printCards(past,cardPast)
-printCards(upcomming,cardUpcomming)
-printCards(home,cardHome)
+cards(home)
 
 let checkbox = document.querySelectorAll("input")
 let data = {}
 
-// if(document.getElementById("section1")){ alert("element exists"); } else { alert("Element does not exist"); }
-// if(document.getElementById("sectionPast")){ alert("element exists"); } else { alert("Element does not exist"); }
-// if(document.getElementById("section")){ alert("element exists"); } else { alert("Element does not exist"); }
+
 
 
 
