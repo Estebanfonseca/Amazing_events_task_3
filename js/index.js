@@ -1,10 +1,11 @@
-const cardHome = document.getElementById("section")
-
-const cardPast = document.getElementById("sectionPast")
-
-const cardUpcomming = document.getElementById('section1')
+const cardPast = document.("#sectionPast")
+const cardHome = document.("#section")
+const cardUpcomming = document.('#section1')
 
 let fecha = Date.parse(currentDate)
+console.log(cardPast)
+// console.log(cardHome)
+// console.log(cardUpcomming)
 
 let past = events.filter(function(date){
     return Date.parse(date.date) < fecha
@@ -18,18 +19,35 @@ let home = events.map(function(event){
     return event
 }).sort((a,b)=> a.name.localeCompare(b.name))
 
-function printCards(array,id){
-    array.forEach(card=>{
+// function printCards(array){
+//     array.forEach(card=>{
+//         let carta = document.createElement('div')
+//         carta.className ='card rounded-4 '
+//         carta.innerHTML+=` <img class="p-3 rounded-5" src="${card.image}" alt="${card.name}" height="250" />
+//         <article class="card-body">
+//             <h4>${card.name}</h4>
+//             <p>${card.description}</p>
+//             <button class="btn btn-secondary" id="btn-details" ><a href="./details.html" class="nav-link text-white">see more</a></button>
+//         </article>`
+//         id?.appendChild(carta)
+// })}
+
+function render (data,cont){
+    data.forEach(item => {
         let carta = document.createElement('div')
         carta.className ='card rounded-4 '
-        carta.innerHTML+=` <img class="p-3 rounded-5" src="${card.image}" alt="${card.name}" height="250" />
+        carta.innerHTML+=` <img class="p-3 rounded-5" src="${item.image}" alt="${item.name}" height="250" />
         <article class="card-body">
-            <h4>${card.name}</h4>
-            <p>${card.description}</p>
+            <h4>${item.name}</h4>
+            <p>${item.description}</p>
             <button class="btn btn-secondary" id="btn-details" ><a href="./details.html" class="nav-link text-white">see more</a></button>
         </article>`
-        id?.appendChild(carta)
-})}
+        cont[0].appendChild(carta)
+    })
+}
+render(home,cardHome)
+render(past,cardPast)
+render(upcomming,cardUpcomming)
 
 // function otra (array,id){
 //     array.forEach(card =>{
