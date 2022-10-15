@@ -3,11 +3,16 @@ let home = events.map(function(event){
 }).sort((a,b)=> a.name.localeCompare(b.name))
 
 let card = document.getElementById("section")
+let search = document.getElementById("buscador")
+let searchTexto= document.getElementById("buscar-text")
+let checkBox = document.getElementById("check")
+
 
 
 
 
 function cards (data){
+    card.innerHTML= ''
     data.forEach(item => {
         let carta = document.createElement('div')
         carta.className ='card rounded-4 '
@@ -15,7 +20,7 @@ function cards (data){
         <article class="card-body">
             <h4>${item.name}</h4>
             <p>${item.description}</p>
-            <button class="btn btn-secondary" id="btn-details" ><a href="./details.html" class="nav-link text-white">see more</a></button>
+            <button class="btn btn-secondary" id="btn-details" ><a href="./details.html?id=${item._id}" class="nav-link text-white">see more</a></button>
         </article>`
         card.appendChild(carta)
     })
@@ -23,62 +28,34 @@ function cards (data){
 
 cards(home)
 
-let checkbox = document.querySelectorAll("input")
-let data = {}
+function searchText(text , array){
+    let arrayFilter = array.filter(event => event.name.toLowerCase().includes(text.toLowerCase()))
+    return arrayFilter
+}
 
-
-
-
-
-
-function filter(fn , value){
-    let categorie = home
-    data[fn]= value
-    for (let category in data) {
-        if (category == 'isSpecialist') {
-            categorie = categorie.filter(mentor => mentor.category.includes(data[category]))
-        }
-        // if (category == 'matchesWithText') {
-        //     categorie = categorie.filter(mentor => mentor.fullName.toLowerCase().includes(applied[category].toLowerCase()))
-        // }
+function filterCategory(array){
+    let checkbox = document.querySelectorAll('input[type="checkbox"]')
+    let newCheckbox = Array.from(checkbox)
+    let filterCheck = newCheckbox.filter(check => check.checked)
+    let checkMark = filterCheck.map(box => box.value)
+    if(checkMark.length > 0){
+        let arrayFiltrado = array.filter(event => checkMark.includes(event.category))
+        return arrayFiltrado
     }
-    return categorie
+    return array
 }
 
+search.addEventListener("click",(event)=>{
+    event.preventDefault()
+    let filterText = searchText(searchTexto.value,home)
+    let filterCat = filterCategory(filterText)
+    cards(filterCat)
+})
+
+checkBox.addEventListener("change",()=>{
+    let filterText = searchText(searchTexto.value,home)
+    let filterCat = filterCategory(filterText)
+    cards(filterCat) 
+})
 
 
-
-
-function updateCards(element,data,fn){
-    element.innerHTML = ' '
-    data.forEach(fn)
-}
-checkbox[1].addEventListener("click",function (event){
-    cat = home.filter((value)=> value.category.includes(event.target.value))
-    console.log(cat)
-})
-checkbox[2].addEventListener("change",function (event){
-    cat = home.filter((value)=> value.category.includes(event.target.value))
-    console.log(cat);
-    
-})
-checkbox[3].addEventListener("change",function (event){
-    cat = home.filter((value)=> value.category.includes(event.target.value))
-    console.log(cat);
-})
-checkbox[4].addEventListener("change",function (event){
-    cat = home.filter((value)=> value.category.includes(event.target.value))
-    console.log(cat);
-})
-checkbox[5].addEventListener("change",function (event){
-    cat = home.filter((value)=> value.category.includes(event.target.value))
-    console.log(cat);
-})
-checkbox[6].addEventListener("change",function (event){
-    cat = home.filter((value)=> value.category.includes(event.target.value))
-    console.log(cat);
-})
-checkbox[7].addEventListener("change",function (event){
-    cat = home.filter((value)=> value.category.includes(event.target.value))
-    console.log(cat);
-})
