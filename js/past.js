@@ -44,8 +44,7 @@ function filterCategory(array){
     return array
 }
 
-search.addEventListener("click",(event)=>{
-    event.preventDefault()
+search.addEventListener("click",()=>{
     let filterText = searchText(searchTexto.value,past)
     let filterCat = filterCategory(filterText)
     cards(filterCat)
