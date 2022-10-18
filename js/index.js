@@ -7,10 +7,6 @@ let search = document.getElementById("buscador")
 let searchTexto= document.getElementById("buscar-text")
 let checkBox = document.getElementById("check")
 
-
-
-
-
 function cards (data){
     card.innerHTML= ''
     data.forEach(item => {
@@ -20,7 +16,7 @@ function cards (data){
         <article class="card-body">
             <h4>${item.name}</h4>
             <p>${item.description}</p>
-            <button class="btn btn-secondary" id="btn-details" ><a href="./details.html?id=${item._id}" class="nav-link text-white">see more</a></button>
+            <a href="./details.html?id=${item._id}" class="nav-link text-white btn btn-secondary" id="btn-details">see more</a>
         </article>`
         card.appendChild(carta)
     })
