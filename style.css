@@ -140,16 +140,12 @@ h2 {
     height: 5%;
     display: flex;
     flex-wrap:wrap;
-    justify-content: center;
+    justify-content: space-between;
 }
 .btn-secondary {
     background-color: var(--bs-code-color);
     transition: all 0.7s;
     width:8rem;
-    height:2.5rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     
 }
 
@@ -220,11 +216,6 @@ h2 {
     font-weight: 500;
     text-transform: uppercase;
 }
-#card_detail{
-    display: flex;
-    flex-direction:row;
-    width: 50%;
-}
 .container-form input:not(#btn) {
     color: rgb(120, 96, 96);
     background-color: transparent;
@@ -265,6 +256,9 @@ h2 {
 
 
 @media screen and (max-width:1190px){
+    .formAndCheck{
+        flex-direction: column-reverse;
+    }
     .search{
         width:100%;
     }
