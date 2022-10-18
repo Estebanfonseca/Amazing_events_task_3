@@ -1,11 +1,14 @@
-let home = events.map(function(event){
-    return event
+let fecha = Date.parse(currentDate)
+
+let past = events.filter(function(date){
+    return Date.parse(date.date) < fecha
 }).sort((a,b)=> a.name.localeCompare(b.name))
 
-let card = document.getElementById("section")
-let search = document.getElementById("buscador")
-let searchTexto= document.getElementById("buscar-text")
-let checkBox = document.getElementById("check")
+
+let card = document.getElementById('sectionPast')
+let search = document.getElementById("buscador1")
+let searchTexto= document.getElementById("buscar-text1")
+let checkBox = document.getElementById("check1")
 
 function cards (data){
     card.innerHTML= ''
@@ -22,7 +25,7 @@ function cards (data){
     })
 }
 
-cards(home)
+cards(past)
 
 function searchText(text , array){
     let arrayFilter = array.filter(event => event.name.toLowerCase().includes(text.toLowerCase()))
@@ -41,17 +44,15 @@ function filterCategory(array){
     return array
 }
 
-
 search.addEventListener("click",()=>{
-    let filterText = searchText(searchTexto.value,home)
+    let filterText = searchText(searchTexto.value,past)
     let filterCat = filterCategory(filterText)
     cards(filterCat)
 })
 
 checkBox.addEventListener("change",()=>{
-    let filterText = searchText(searchTexto.value,home)
+    let filterText = searchText(searchTexto.value,past)
     let filterCat = filterCategory(filterText)
     cards(filterCat) 
 })
-
 
