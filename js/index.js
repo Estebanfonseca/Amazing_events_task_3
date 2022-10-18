@@ -45,6 +45,7 @@ function filterCategory(array){
     return array
 }
 
+
 search.addEventListener("click",()=>{
     let filterText = searchText(searchTexto.value,home)
     let filterCat = filterCategory(filterText)
