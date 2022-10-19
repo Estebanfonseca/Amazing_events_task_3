@@ -39,3 +39,6 @@ card.innerHTML = `
             </article>
             </div>`
 // 
+
+
+
