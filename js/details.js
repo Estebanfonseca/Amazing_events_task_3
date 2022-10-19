@@ -1,11 +1,15 @@
 const detail = events
 let query = location.search
+console.log(query)
 
 let getter = new URLSearchParams(query)
+console.log(getter)
 
 let id = parseInt(getter.get("id"))
+console.log(id)
 
 let evento = detail.find((item) => item._id === id)
+console.log(evento)
 
 let card = document.getElementById("detail")
 
@@ -28,9 +32,13 @@ card.innerHTML = `
                 <p class="card-text">${evento.place}</p>
                 <h6 class="card-title">Capacity:</h6>
                 <p class="card-text">${evento.capacity}</p>
-                <h6 class="card-title">Assistance:</h6>
-                <p class="card-text">${evento.assistance}</p>
+                <h6 class="card-title">${evento.assistance? "Assistance:" : "Estimate:"}</h6>
+                <p class="card-text">${evento.assistance ? evento.assistance : evento.estimate}</p>
                 <h6 class="card-title">Price:</h6>
                 <p class="card-text">${evento.price}</p>
             </article>
             </div>`
+// 
+
+
+
